@@ -1,35 +1,36 @@
 @startuml
 left to right direction
 
-actor "Дед" as Grandpa
-actor "Баба" as Grandma
-actor "Мышь" as Mouse
-actor "Курочка" as Chicken
+actor "Шкипер" as Skipper
+actor "Ковальски" as Kowalski
+actor "Рико" as Rico
+actor "Младший" as Private
+actor "Охрана" as Guard
 
-package "Управление золотыми активами" {
-  usecase "Бить золотое яйцо" as Hit
-  usecase "Разбить (случайно)" as BreakByTail
-  usecase "Плакать" as Cry
-  usecase "Утешить (Обещать простое)" as Comfort
-  usecase "Снести простое яйцо" as SpawnSimple
+package "Побег из зоопарка" {
+    usecase "Взломать замок" as Hack
+    usecase "Захватить судно" as CaptureShip
+    usecase "Уплыть в Антарктиду" as Sail
+    usecase "Усыпить охрану" as Sleep
+    usecase "Отвлечь внимание" as Distract
 }
 
-' Дед и Баба бьют яйцо (действие)
-Grandpa --> Hit
-Grandma --> Hit
+' Шкипер управляет захватом судна
+Skipper --> CaptureShip
 
-' Мышь разбивает (действие)
-Mouse --> BreakByTail
+' Ковальски взламывает
+Kowalski --> Hack
 
-' Дед и Баба ПЛАЧУТ (линии ведут к ним)
-Grandpa --> Cry
-Grandma --> Cry
+' Рико усыпляет охрану
+Rico --> Sleep
 
-' Курочка УТЕШАЕТ и СНОСИТ (линии к ней)
-Chicken --> Comfort
-Chicken --> SpawnSimple
+' Младший отвлекает
+Private --> Distract
 
 ' Зависимости внутри системы
-Cry <.. Comfort : <<extend>> : если плачут
-Comfort ..> SpawnSimple : <<include>>
+CaptureShip .> Hack : <<include>>
+CaptureShip .> Sleep : <<include>>
+CaptureShip .> Distract : <<include>>
+Sail ..> CaptureShip : <<extend>>
+
 @enduml
