@@ -40,7 +40,8 @@
 
 ## Диаграмма
 
-![Диаграмма вариантов использования](![Use Case Diagram](doc/use_case.png))
+![Диаграмма вариантов использования]
+![Use Case Diagram](doc/use_case.png)
 
 ```
 @startuml
